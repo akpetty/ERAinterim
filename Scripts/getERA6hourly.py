@@ -22,10 +22,15 @@ lonlat = [240., 255., -73.5, -71.]
 varStr='sp'
 
 f1 = Dataset(rawdatapath+'ERAI/'+varStr+'.nc', 'r')
-var = f1.variables[varStr][:].astype(float32)
+#var = f1.variables[varStr][:].astype(float16)
+var = f1.variables[varStr][:]
+print 'read in data'
 
 if (varStr=='t2m'):
 	var=var-273.15
+
+if (varStr=='sp'):
+	var=var/100.
 
 lon = f1.variables['longitude'][:]
 lat = f1.variables['latitude'][:]

@@ -16,7 +16,7 @@ rawdatapath='../../../../DATA/'
 figPath='../Figures/'
 outPath='../Output/ERAI/'
 
-var=5
+var=6
 if (var==0):
 	varStr='t2m'
 	labelStr='2 m air temperature (C)'
@@ -42,6 +42,11 @@ elif (var==4):
 elif (var==5):
 	varStr='strd'
 	labelStr='Downwelling radiation (W/m2)'
+	scale_factor=1
+
+elif (var==6):
+	varStr='sp'
+	labelStr='Surface pressure (Pa)'
 	scale_factor=1
 
 varYrs=[]
