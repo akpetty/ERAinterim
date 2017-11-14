@@ -31,5 +31,5 @@ def getERA(year):
     })
 
 
-for x in xrange(1980, 2017):
+for x in xrange(2016, 2016+1):
     getERA(x)
