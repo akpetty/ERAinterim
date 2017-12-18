@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 from ecmwfapi import ECMWFDataServer
 server = ECMWFDataServer()
 
@@ -12,24 +12,25 @@ def getERA(year):
         "levtype": "sfc",
         #"number": "0",
         # for codes see http://apps.ecmwf.int/codes/grib/param-db
-        # 228.128=tp, 144.128=sf #CHANGE LABEL BELOW
-        "param": "228.128",
+        # 228.128=tp, 144.128=sf 165.128/166.128=u/v winds, 167.128=2mtemp
+        "param": "167.128",
         # as we are getting total precip, we need to forecast how much precip comes down over 
         # the next 12 hours (hence the step)
-        "step": "12",
+        "step": "0",
         # in 0.5 degrees lat/lon
         "grid": "0.75/0.75",
         "stream": "oper",
         "date": ""+str(year)+"-01-01/to/"+str(year)+"-12-31",
         # see above comment. 
-        "time": "00:00:00/12:00:00",
-        "type": "fc",
+        "time": "00:00:00/06:00:00/12:00:00/18:00:00",
+        "type": "an",
         "format" : "netcdf",
         # set an output file name
-        "target": ""+reanalysisDataPath+"ERAI_tp_"+str(year)+".nc",
+        "target": ""+reanalysisDataPath+"ERAI_2mtemp_"+str(year)+".nc",
 
     })
 
 
 for x in xrange(1991, 1991+1):
     getERA(x)
+
